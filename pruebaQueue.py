@@ -1,5 +1,8 @@
 import threading, queue
 
+# Para mas información sobre multiprocessing: https://docs.python.org/3/library/multiprocessing.html
+# Para mas información sobre Queue: https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.queues
+
 q = queue.Queue()
 
 def worker():
