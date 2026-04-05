@@ -1,9 +1,10 @@
-# Tested on Python 3.11
 import time
 import threading
 from multiprocessing import Process
 from concurrent.futures import ThreadPoolExecutor
 
+# Este código compara el rendimiento de la ejecución de una función que cuenta hasta un número dado
+# utilizando hilos (threads), procesos (processes) y ThreadPoolExecutor en Python.
 
 def count(n):
     total = 0
@@ -11,31 +12,41 @@ def count(n):
         total += i
     return total
 
-
+# Función para ejecutar la función count utilizando hilos
+# La función run_threads crea dos hilos que ejecutan la función count y mide el tiempo que tarda en completarse.
 def run_threads(n):
     t1 = threading.Thread(target=count, args=(n,))
     t2 = threading.Thread(target=count, args=(n,))
+
     t0 = time.perf_counter()
+
     t1.start()
     t2.start()
     t1.join()
     t2.join()
     return time.perf_counter() - t0
 
-
+# Función para ejecutar la función count utilizando procesos
+# La función run_processes crea dos procesos que ejecutan la función count y mide el tiempo que tarda en completarse.
 def run_processes(n):
     p1 = Process(target=count, args=(n,))
     p2 = Process(target=count, args=(n,))
+
     t0 = time.perf_counter()
+
     p1.start()
     p2.start()
     p1.join()
     p2.join()
     return time.perf_counter() - t0
 
+# Función para ejecutar la función count utilizando ThreadPoolExecutor
+# La función run_ThreadPoolExecutor utiliza ThreadPoolExecutor para ejecutar la función count en paralelo
 def run_ThreadPoolExecutor(n):
     with ThreadPoolExecutor(max_workers=2) as executor:
+
         t0 = time.perf_counter()
+
         executor.submit(count, n)
         executor.submit(count, n)
     return time.perf_counter() - t0 
