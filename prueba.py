@@ -52,7 +52,7 @@ def run_ThreadPoolExecutor(n):
     return time.perf_counter() - t0 
 
 if __name__ == "__main__":
-    n = 5000000
+    n = 50000000
     print(f"threads:   {run_threads(n):.3f}s")
     print(f"processes: {run_processes(n):.3f}s")
     print(f"ThreadPoolExecutor: {run_ThreadPoolExecutor(n):.3f}s")
