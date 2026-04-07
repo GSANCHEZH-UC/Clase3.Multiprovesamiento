@@ -62,3 +62,6 @@ print(f"Productos: {productos_df.shape[0]} filas, {productos_df.shape[1]} column
 print(f"Tiendas: {tiendas_df.shape[0]} filas, {tiendas_df.shape[1]} columnas")
 print(f"Calendario: {calendario_df.shape[0]} filas, {calendario_df.shape[1]} columnas")
 
+
+###a  aa
+
